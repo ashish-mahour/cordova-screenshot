@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Base64;
 import android.view.TextureView;
@@ -45,7 +46,7 @@ public class Screenshot extends CordovaPlugin {
 
     protected static String[] PERMISSIONS = {};
     static {
-      if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         PERMISSIONS = new String[]{
           Manifest.permission.READ_MEDIA_IMAGES,
           Manifest.permission.READ_MEDIA_AUDIO,
@@ -204,7 +205,7 @@ public class Screenshot extends CordovaPlugin {
 
      public void getScreenshotAsURISync() throws JSONException{
         mQuality = (Integer) mArgs.get(0);
-        
+
         Runnable r = new Runnable(){
             @Override
             public void run() {
